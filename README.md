@@ -1,5 +1,6 @@
-#Javascript practice projects
+Javascript practice projects
 <br>
-#Branches:
+Branches:
 <br>
 MAIN - Rock Paper Scissors
+<br>
