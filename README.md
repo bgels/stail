@@ -7,5 +7,5 @@ Javascript practice projects
 
 Branches:
 <br>
-MAIN - Rock Paper Scissors
+main - Rock Paper Scissors
 <br>
