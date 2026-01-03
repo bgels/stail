@@ -1,78 +1,80 @@
-let humanScore = 0, computerScore = 0;
+// function sumOfTripledEvens(input) {
+//   return input
+//     .filter((num) => num % 2 === 0)
+//     .map((num) => num * 3)
+//     .reduce((sum, curr) => sum + curr, 0);
+// }
 
-function getComputerChoice(){
-    const choice = ["rock", "paper", "scissors"];
-    return choice[parseInt(Math.random() * 3)];
+
+
+// let arr = [1,2,3,4,5,6,7,8,9,10];
+// let input = [1, 2, 3, 4, 5];
+// const mappedArr = input.map((num) => {return num + 1;});
+// const isOdd = input.filter((num) => {return num%2 == 1;});
+// const productOfAllNums2 = input.reduce((total, curr) => {return total * curr;});
+
+// console.log(arr);
+// console.log(sumOfTripledEvens(arr));
+// console.log(arr);
+
+
+// console.log(mappedArr);
+// console.log(isOdd);
+// console.log(input);
+// console.log(productOfAllNums2);
+
+console.log("Camelize");
+function camelize(arr){
+  return arr
+    .split('-')
+    .map(
+      (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join('');
 }
 
-function getHumanChoice(){
-    const choice = ["rock", "paper", "scissors"];
-    
-    let input = prompt("Rock, Paper, Or Scissor?");
-    if(input){
-        input.toLowerCase();
+let camel = "background-color";
+camel = camelize(camel);
+console.log(camel);
+
+console.log("FilterRange");
+function filterRange(arr, a, b){
+  return arr.filter((item) => item >= a && item <=b);
+}
+
+let arr = [5, 3, 8, 1];
+let filtered = filterRange(arr, 1, 4);
+console.log(arr); // 5,3,8,1 (not modified)
+console.log(filtered); // 3,1 (matching values)
+
+console.log("FilterRangeInPlace");
+function filterRangeInPlace(arr, a, b){
+  for(let i =0; i<arr.length; i++){
+    if(arr[i] < a|| arr[i] > b){
+      arr.splice(i, 1);
+      i--;
     }
-    if(choice.includes(input)){
-        return input;
-    }else{
-        console.log("Invalid input! Try again!");
-        return undefined;
-    }
+  }
+}
+arr = [5, 3, 8, 1];
+console.log(arr);
+filterRangeInPlace(arr, 1, 4);
+console.log(arr);
+
+console.log("DecreasingSort");
+function decreasingSort(a, b){
+  if(b > a) return 1;
+  if(b == a) return 0;
+  if(b < a) return -1;
 }
 
-console.log("Running game!");
-function playRound(humanChoice , computerChoice){
+arr = [5, 2, 1, -10, 8];
+arr.sort(decreasingSort)
+console.log(arr);
 
-    if (!humanChoice) return;
-    
-    switch(computerChoice){
-        case "scissors":
-            if(humanChoice === "rock"){
-                console.log("Human wins! rock beats scissors");
-                ++humanScore;
-            }else if(humanChoice === "paper"){
-                console.log("Clanker wins! scissors beats paper");
-                ++computerScore;
-            }
-            else{
-                console.log("TIE!");
-            }
-            break;
-        case "rock":
-            if(humanChoice === "paper"){
-                console.log("Human wins! paper beats rock");
-                ++humanScore;
-            }else if(humanChoice === "scissors"){
-                console.log("Clanker wins! rock beats scissor");
-                ++computerScore;
-            }
-            else{
-                console.log("TIE!");
-            }
-            break;
-        case "paper":
-            if(humanChoice === "scissors"){
-                console.log("Human wins! scissor beats paper");
-                ++humanScore;
-            }else if(humanChoice === "rock"){
-                console.log("Clanker wins! paper beats rock");
-                ++computerScore;
-            }
-            else{
-                console.log("TIE!");
-            }
-            break;
-    }
-
-    console.log(`SCORE: Human - ${humanScore} Computer - ${computerScore}`);
-}
-
-while(humanScore < 5 && computerScore < 5){
-    playRound(getHumanChoice(), getComputerChoice());
-}
-
-if(humanScore >= 5){
-    console.log("Humans win!");
-}else{
-    console.log("Computer wins!");
-}
+console.log("CopySorted");
+arr = ["HTML", "JavaScript", "CSS"];
+let copySorted = arr => arr.toSorted();
+let sorted = copySorted(arr);
+console.log(arr);
+console.log(sorted);
